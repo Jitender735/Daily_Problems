@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    long long int maxSumLCM(int n) 
+    {
+        // code here
+        long long int ans=0;
+        for(int i=1;i<=(int)sqrt(n);i++)
+        {
+            if(n%i==0)
+            {
+                ans+=i;
+                if((n/i)!=i)
+                {
+                    ans+=n/i;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+// IN THIS WE SIMPLY FIND THE FACTOR OF N AND RUN THE LOOP TO SQRT(N) AND THEN REMAINIG FACTORS FIND BY N/I VALUE 

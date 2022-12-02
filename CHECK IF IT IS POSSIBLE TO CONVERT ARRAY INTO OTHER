@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    int isItPossible(string S, string T, int m, int n) {
+        // code here
+        int i=0,j=0;
+        if(m!=n)return 0;
+        
+        
+        
+        while(i<m||j<n)
+        {
+            while(S[i]=='#')i++;
+            while(T[j]=='#')j++;
+            if(i<m && j>=n)return 0;
+            if(i>=m && j<n)return 0;
+            if(S[i]!=T[j])return 0;  ///CASE 1
+            else
+            {
+                if(S[i]=='A' && i<j)return 0; /// CASE 2
+                else if(S[i]=='B' && i>j)return 0;  ///CASE 3
+            }
+            
+          i++;
+          j++;
+        }
+        return 1;
+    }
+};

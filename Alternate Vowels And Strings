@@ -1,0 +1,61 @@
+class Solution{
+public:
+void util(vector<int> &a,vector<int> &b,string s)
+{
+int p=0,q=0;
+
+for(int i=0;i<s.length();i++)
+{
+if(i%2==0){
+ while(a[p]==0)p++;
+ s[i]=p+'a';
+ a[p]--;
+}
+else
+{
+while(b[q]==0)q++;
+ s[i]=q+'a';
+ b[q]--;
+}
+}
+}
+
+string rearrrange(string s,int n){
+vector<int> c(26,0),v(26,0);
+int v_count=0,c_count=0;
+for(int i=0;i<n;i++)
+{
+if(s[i]=='a'||s[i]=='u'||s[i]=='o'||s[i]=='i'||s[i]=='e')
+{
+v[i-'a']++;
+v_count++;
+}
+else{
+c[i-'a']++
+}
+}
+c_count=n-v_count;
+if(abs(c_count-v_count)>1)return"-1";
+if(c_count>v_count)util(c,v,s);
+else if(c_count<v_count)(v,c,s);
+
+if(c_count==v_count)
+{
+for(int i=0;i<26;i++)
+{
+if(v[i]!=0)
+{
+util(v,c,s);
+break;
+}
+else if(c[i]!=0)
+{
+util(c,v,s);
+break;
+}
+}
+}
+return s;
+}
+
+};
